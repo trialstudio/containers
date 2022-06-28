@@ -8,7 +8,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: grafana
+  IMAGE_NAME: trial-studio-grafana
 
 
 jobs:
