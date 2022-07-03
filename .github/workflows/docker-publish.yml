@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches: [ "main" ]
-    paths: grafana
+    paths: 'grafana/**'
 
 env:
   REGISTRY: ghcr.io
@@ -61,7 +61,7 @@ jobs:
         id: version
         run: |
           version=$(cat grafana/Dockerfile | awk -F: '{print $2}')
-          echo "::set-output name=version::$version"
+          echo "::set-output name=version::${version}-$(git rev-parse --short HEAD)"
         
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
